@@ -8,7 +8,6 @@ import {
 } from "./handlers.js";
 import { CACHE } from "./shared.js";
 import { WEB_APP_URL } from "./constants.js";
-import { MENU_KEYBOARD_EN } from "./keyboards.js";
 
 const MENU_BUTTON_RU = {
   type: "web_app",
@@ -26,12 +25,6 @@ const MENU_BUTTON_EN = {
 };
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-
-//TODO: start
-//TODO: info / menu
-//TODO: generate share link
-//TODO: report /support
-//TODO: faq
 
 bot.start(async (ctx) => {
   if (!CACHE[ctx.message.from.id]) {

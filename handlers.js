@@ -1,10 +1,6 @@
 import { fmt, link, bold } from "telegraf/format";
 
-import {
-  START_GIF_LINK_EN,
-  START_GIF_LINK_RU,
-  WEB_APP_URL,
-} from "./constants.js";
+import { START_GIF_LINK, WEB_APP_URL } from "./constants.js";
 import {
   LETSPLAY_KEYBOARD_EN,
   LETSPLAY_KEYBOARD_RU,
@@ -75,12 +71,12 @@ export async function sendLetsPlayMessage(ctx) {
 
   let msg;
   if (locale === LOCALES.RU) {
-    msg = await ctx.replyWithAnimation(START_GIF_LINK_RU, {
+    msg = await ctx.replyWithAnimation(START_GIF_LINK, {
       caption: link("🎮🎮🎮", WEB_APP_URL),
       ...LETSPLAY_KEYBOARD_RU.resize(),
     });
   } else {
-    msg = await ctx.replyWithAnimation(START_GIF_LINK_EN, {
+    msg = await ctx.replyWithAnimation(START_GIF_LINK, {
       caption: link("🎮🎮🎮", WEB_APP_URL),
       ...LETSPLAY_KEYBOARD_EN.resize(),
     });
