@@ -117,7 +117,7 @@ export async function sendHowToPlayMessage(ctx) {
     );
   } else {
     ctx.reply(
-      `🔴🔵  ${bold`Choose Your Path`}: As you dive into the game, you'll be presented with two intriguing options on the screen. These could be anything from simple dilemmas to mind-bending conundrums.
+      fmt`🔴🔵  ${bold`Choose Your Path`}: As you dive into the game, you'll be presented with two intriguing options on the screen. These could be anything from simple dilemmas to mind-bending conundrums.
 
 🚫❓ ${bold`No Right or Wrong`}: There are no correct answers here! It's all about what you prefer or find most interesting. So, don't stress about making the "right" choice.
     
