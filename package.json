@@ -1,0 +1,15 @@
+{
+  "name": "vybor_bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Koobi33/test_vybor_bot.git",
+  "author": "Suchkov Dmitry <45110271+Koobi33@users.noreply.github.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env ./index.js "
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3"
+  }
+}
