@@ -4,7 +4,7 @@ import {
   selectLanguage,
   sendWelcomeMessage,
   sendHowToPlayMessage,
-  sendLetsPlayMessage,
+  sendStartDefaultMessages,
 } from "./handlers.js";
 import { CACHE } from "./shared.js";
 import { WEB_APP_URL } from "./constants.js";
@@ -33,15 +33,20 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 //TODO: report /support
 //TODO: faq
 
-bot.start(selectLanguage);
+bot.start(async (ctx) => {
+  if (!CACHE[ctx.message.from.id]) {
+    selectLanguage(ctx);
+  } else {
+    await sendStartDefaultMessages(ctx);
+  }
+});
 
 bot.action("english", async (ctx) => {
   ctx.setChatMenuButton(MENU_BUTTON_EN);
   CACHE[ctx.update.callback_query.from.id] = "en";
   //TODO: POST LOCALE TO THE BACKEND
   ctx.deleteMessage(ctx.message_id);
-  await sendLetsPlayMessage(ctx);
-  await sendWelcomeMessage(ctx);
+  await sendStartDefaultMessages(ctx);
 });
 
 bot.action("russian", async (ctx) => {
@@ -49,8 +54,7 @@ bot.action("russian", async (ctx) => {
   CACHE[ctx.update.callback_query.from.id] = "ru";
   //TODO: POST LOCALE TO THE BACKEND
   ctx.deleteMessage(ctx.message_id);
-  await sendLetsPlayMessage(ctx);
-  await sendWelcomeMessage(ctx);
+  await sendStartDefaultMessages(ctx);
 });
 
 bot.command("howtoplay", (ctx) => {

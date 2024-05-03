@@ -24,8 +24,11 @@ export async function selectLanguage(ctx) {
 }
 
 export async function sendWelcomeMessage(ctx) {
-  const locale = await getUserLocale(ctx.update.callback_query.from.id);
-  const firstName = ctx.update.callback_query.from.first_name;
+  const locale = await getUserLocale(
+    ctx.update.callback_query?.from.id || ctx.message.from.id
+  );
+  const firstName =
+    ctx.update.callback_query?.from.first_name || ctx.message.from.first_name;
 
   if (locale === LOCALES.RU) {
     ctx.reply(
@@ -60,8 +63,15 @@ Are you ready to accept the challenge? Click the link below and let your prefere
   }
 }
 
+export async function sendStartDefaultMessages(ctx) {
+  await sendLetsPlayMessage(ctx);
+  await sendWelcomeMessage(ctx);
+}
+
 export async function sendLetsPlayMessage(ctx) {
-  const locale = await getUserLocale(ctx.update.callback_query.from.id);
+  const locale = await getUserLocale(
+    ctx.update.callback_query?.from.id || ctx.message.from.id
+  );
 
   let msg;
   if (locale === LOCALES.RU) {
@@ -81,7 +91,9 @@ export async function sendLetsPlayMessage(ctx) {
 }
 
 export async function sendHowToPlayMessage(ctx) {
-  const locale = await getUserLocale(ctx.update.callback_query.from.id);
+  const locale = await getUserLocale(
+    ctx.update.callback_query?.from.id || ctx.message.from.id
+  );
 
   if (locale === LOCALES.RU) {
     ctx.reply(
