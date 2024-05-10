@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const defaultOptions = {
-  baseURL: "https://wouldyoudora.xyz/api",
+  baseURL: "127.0.0.1:8080/api",
   headers: {
     "Content-Type": "application/json",
   },
