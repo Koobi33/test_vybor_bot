@@ -19,7 +19,13 @@ export const usersService = {
     // name: string,
     // locale: Locales,
     // tg_id: number,
-    // referedBy?: string,
+    //  userInvite: initData?.startParam
+    // ? {
+    //     inviteSenderId: string,
+    //     invitePlacement: "question",
+    //     inviteEntityId: string,
+    //   }
+    // : undefined,
     //   }
   ) => {
     const res = await api.post("/users", data);
